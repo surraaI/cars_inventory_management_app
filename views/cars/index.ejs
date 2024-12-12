@@ -1,0 +1,10 @@
+<%- include('../layout') %>
+
+<% cars.forEach(car => { %>
+    <div>
+      <h2><%= car.make %> <%= car.model %> (<%= car.year %>)</h2>
+      <p>Price: $<%= car.price %>, Stock: <%= car.stock %></p>
+    </div>
+  <% }); %>
+  <a href="/cars/new">Add New Car</a>
+  

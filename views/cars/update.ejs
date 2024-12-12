@@ -1,0 +1,70 @@
+<%- include('../layout') %>
+
+<h1>Update Car</h1>
+
+<form action="/cars/<%= car.id %>?_method=PUT" method="POST">
+  <label for="make">Make:</label>
+  <input
+    type="text"
+    id="make"
+    name="make"
+    value="<%= car.make %>"
+    required
+  />
+
+  <label for="model">Model:</label>
+  <input
+    type="text"
+    id="model"
+    name="model"
+    value="<%= car.model %>"
+    required
+  />
+
+  <label for="year">Year:</label>
+  <input
+    type="number"
+    id="year"
+    name="year"
+    value="<%= car.year %>"
+    min="1900"
+    max="2099"
+    required
+  />
+
+  <label for="price">Price:</label>
+  <input
+    type="number"
+    id="price"
+    name="price"
+    step="0.01"
+    value="<%= car.price %>"
+    required
+  />
+
+  <label for="stock">Stock:</label>
+  <input
+    type="number"
+    id="stock"
+    name="stock"
+    value="<%= car.stock %>"
+    min="0"
+    required
+  />
+
+  <label for="category_id">Category:</label>
+  <select id="category_id" name="category_id" required>
+    <% categories.forEach(category => { %>
+      <option
+        value="<%= category.id %>"
+        <%= category.id === car.category_id ? "selected" : "" %>
+      >
+        <%= category.name %>
+      </option>
+    <% }) %>
+  </select>
+
+  <button type="submit">Update Car</button>
+</form>
+
+<a href="/categories">Back to Categories</a>
